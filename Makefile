@@ -28,8 +28,8 @@ run: ## Run the Django server
 
 start: install migrate run ## Install requirements, apply migrations, then start development server
 
-.PHONY: load
-load: ## Load data from fixture into DB
+.PHONY: load_data
+load_data: ## Load data from fixture into DB
 	$(PYTHON) $(APP_DIR)/manage.py loaddata pages
 
 .PHONY: wipe_data
