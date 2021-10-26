@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1>Vorwärts Kleinanzeigen</h1>
+    <p class="lead text-muted">Click on the images to view enlarge image and you can rotate them too</p>
+  </div>
+</section>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for page in object_list %}
+      <div class="col">
+        <div class="card shadow-sm text-center">
+          <a href="{{ page.get_absolute_url }}">
+          <img
+            src="{{ STATIC_PREFIX }}img/thumbs/{{page.file_id}}.jpg"
+            alt="{{ page.file_id }}"
+            height="400">
+          </a>
+          <p class="card-text"><strong>{{ page.publish_date | date:'d.m.Y' }}</strong><br>
+            Ausgabe {{ page.issue_number }}  Seite {{ page.page_number }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<nav aria-label="Pagination">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a
+        class="page-link"
+        href="?page={{ page_obj.previous_page_number }}"
+        aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+
+    <li class="page-item active" aria-current="page">
+      <a
+        class="page-link"
+        href="?page={{ page_obj.number }}">
+          {{ page_obj.number }}
+      </a>
+    </li>
+
+    {% if page_obj.has_next %}
+    <li class="page-item">
+      <a class="page-link"
+         href="?page={{ page_obj.next_page_number }}"
+         aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}
