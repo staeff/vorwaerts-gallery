@@ -4,7 +4,8 @@ VENV := ./.venv
 BIN := $(VENV)/bin
 PYTHON := $(BIN)/python
 
-include .env
+# vars could be put into external .env file
+#include .env
 
 .PHONY: help
 help: ## Show this help
