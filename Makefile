@@ -26,6 +26,8 @@ migrate: ## Make and run migrations
 run: ## Run the Django server
 	$(PYTHON) $(APP_DIR)/manage.py runserver
 
+bootstrap: install migrate extract_images load_data ## Bootstrap the app, install, migrate, add images, load initial data
+
 start: install migrate run ## Install requirements, apply migrations, then start development server
 
 .PHONY: load_data
