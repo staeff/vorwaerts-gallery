@@ -29,12 +29,17 @@ run: ## Run the Django server
 start: install migrate run ## Install requirements, apply migrations, then start development server
 
 .PHONY: load_data
-load_data: ## Load data from fixture into DB
+load_data: wipe_data ## Load data from fixture into DB
 	$(PYTHON) $(APP_DIR)/manage.py loaddata pages
 
 .PHONY: wipe_data
 wipe_data: ## Remove data of models from the DB
 	$(PYTHON) $(APP_DIR)/manage.py wipe_data
+
+.PHONY: extract_images
+extract_images: ## Download apps images to static/img folder
+	tar xf thumbs.tar.gz --directory=static/img/
+	tar xf scans.tar.gz --directory=static/img/
 
 .PHONY: clean
 clean: ## Remove the virtual env
