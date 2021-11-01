@@ -59,8 +59,10 @@ wipe_data: ## Remove data of models from the DB
 
 .PHONY: extract_images
 extract_images: ## Download apps images to static/img folder
-	tar xf thumbs.tar.gz --directory=static/img/
-	tar xf scans.tar.gz --directory=static/img/
+	unzip sample-img.zip
+	mv sample-img/* static/img/
+	rm -rf __MACOSX
+	rm -rf sample-img
 
 .PHONY: clean
 clean: ## Remove the virtual env
