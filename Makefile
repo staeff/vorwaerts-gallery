@@ -17,7 +17,7 @@ venv: ## Make a new virtual environment
 
 .PHONY: install
 install: venv ## Make venv and install requirements
-	$(BIN)/pip install -r requirements.txt
+	$(BIN)/pip install -r requirements-dev.txt
 
 migrate: ## Make and run migrations
 	$(PYTHON) $(APP_DIR)/manage.py makemigrations
