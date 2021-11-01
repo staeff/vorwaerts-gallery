@@ -31,8 +31,8 @@ create_staticfiles: ## Create 'staticfiles' folder
 run: ## Run the Django server
 	$(PYTHON) $(APP_DIR)/manage.py runserver
 
-.PHONY: qa ## Run code quality checks
-qa:
+.PHONY: qa
+qa: ## Run code quality checks
 	pip-compile requirements.in -q
 	git diff -G COMMENT_REGEX --exit-code requirements.txt
 	pip-compile requirements-dev.in -q
