@@ -1,0 +1,8 @@
+-r requirements.in
+
+black
+coverage[toml]
+django-debug-toolbar
+django-extensions
+pdbpp
+pip-tools
