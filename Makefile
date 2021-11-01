@@ -31,6 +31,10 @@ create_staticfiles: ## Create 'staticfiles' folder
 run: ## Run the Django server
 	$(PYTHON) $(APP_DIR)/manage.py runserver
 
+.PHONY: test
+test: ## Run the testsuite for the Django app
+	$(PYTHON) $(APP_DIR)/manage.py test
+
 bootstrap: install migrate extract_images load_data create_staticfiles ## Bootstrap the app, install, migrate, add images, load initial data
 
 start: install migrate run ## Install requirements, apply migrations, then start development server
