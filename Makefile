@@ -39,6 +39,7 @@ qa:
 	git diff -G COMMENT_REGEX --exit-code requirements-dev.txt
 	python manage.py check
 	python manage.py makemigrations --check
+	pre-commit run -a
 
 .PHONY: test
 test: ## Run the testsuite for the Django app
