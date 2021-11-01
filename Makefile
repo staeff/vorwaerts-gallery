@@ -3,7 +3,7 @@ APP_DIR := .
 VENV := ./.venv
 BIN := $(VENV)/bin
 PYTHON := $(BIN)/python
-
+COMMENT_REGEX = '^[+-]\#'
 # vars could be put into external .env file
 #include .env
 
@@ -30,6 +30,15 @@ create_staticfiles: ## Create 'staticfiles' folder
 .PHONY: run
 run: ## Run the Django server
 	$(PYTHON) $(APP_DIR)/manage.py runserver
+
+.PHONY: qa ## Run code quality checks
+qa:
+	pip-compile requirements.in -q
+	git diff -G COMMENT_REGEX --exit-code requirements.txt
+	pip-compile requirements-dev.in -q
+	git diff -G COMMENT_REGEX --exit-code requirements-dev.txt
+	python manage.py check
+	python manage.py makemigrations --check
 
 .PHONY: test
 test: ## Run the testsuite for the Django app
