@@ -5,7 +5,7 @@
 <section class="jumbotron text-center">
   <div class="container">
     <h1>Vorwärts Kleinanzeigen</h1>
-    <p class="lead text-muted">Click on the images to view enlarge image and you can rotate them too</p>
+    <p class="lead text-muted">Sieht ein Bild interessant aus? Klick auf die Seite, um sie zu vergrößern.</p>
   </div>
 </section>
 
@@ -19,7 +19,7 @@
           <img
             src="{{ STATIC_PREFIX }}img/thumbs/{{page.file_id}}.jpg"
             alt="{{ page.file_id }}"
-            height="400">
+            width="100%">
           </a>
           <p class="card-text"><strong>{{ page.publish_date | date:'d.m.Y' }}</strong><br>
             Ausgabe {{ page.issue_number }}  Seite {{ page.page_number }}
@@ -30,36 +30,48 @@
     </div>
   </div>
 </div>
-<nav aria-label="Pagination">
-  <ul class="pagination">
-    {% if page_obj.has_previous %}
-    <li class="page-item">
-      <a
-        class="page-link"
-        href="?page={{ page_obj.previous_page_number }}"
-        aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
+<nav aria-label="navigation">
+  <ul class="pagination justify-content-center">
+  {% if page_obj.has_previous %}
+      <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
     </li>
-    {% endif %}
+  {% else %}
+      <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+  {% endif %}
 
-    <li class="page-item active" aria-current="page">
-      <a
-        class="page-link"
-        href="?page={{ page_obj.number }}">
-          {{ page_obj.number }}
-      </a>
-    </li>
+  {% if page_obj.number|add:'-4' > 1 %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+  {% endif %}
 
-    {% if page_obj.has_next %}
-    <li class="page-item">
-      <a class="page-link"
-         href="?page={{ page_obj.next_page_number }}"
-         aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
+  {% for i in page_obj.paginator.page_range %}
+      {% if page_obj.number == i %}
+          <li class="page-item active" aria-current="page">
+        <span class="page-link">
+          {{ i }}
+          <span class="sr-only">(current)</span>
+        </span>
+      </li>
+      {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+           <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+  {% endfor %}
+
+  {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+     <li class="page-item"><a class="page-link" href="?page={{ page_obj.number|add:'5' }}">&hellip;</a></li>
+  {% endif %}
+
+  {% if page_obj.has_next %}
+      <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
     </li>
-    {% endif %}
-  </ul>
+  {% else %}
+      <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+    </li>
+  {% endif %}
+</ul>
 </nav>
 {% endblock %}
