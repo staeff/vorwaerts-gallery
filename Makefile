@@ -51,7 +51,7 @@ start: install migrate run ## Install requirements, apply migrations, then start
 
 .PHONY: load_data
 load_data: wipe_data ## Load data from fixture into DB
-	$(PYTHON) $(APP_DIR)/manage.py loaddata pages
+	$(PYTHON) $(APP_DIR)/manage.py loaddata pages-sample
 
 .PHONY: wipe_data
 wipe_data: ## Remove data of models from the DB
