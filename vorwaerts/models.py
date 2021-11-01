@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 # Create your models here.
 class NewspaperPage(models.Model):
     file_id = models.CharField(max_length=100)
@@ -20,6 +21,7 @@ class NewspaperPage(models.Model):
     def get_absolute_url(self):
         return reverse('page_detail', args=[str(self.id)])
 
+
 class ClassifiedAd(models.Model):
     image_name = models.CharField(max_length=100)
     text = models.TextField()
@@ -27,5 +29,5 @@ class ClassifiedAd(models.Model):
         NewspaperPage,
         on_delete=models.CASCADE,
         related_name='advertisements',
-        related_query_name='advertisment'
+        related_query_name='advertisment',
     )

@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import logging
 import os
 from pathlib import Path
+
 from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
+
 
 load_dotenv()  # take environment variables from .env
 
@@ -44,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'vorwaerts'
+    'vorwaerts',
 ]
 
 MIDDLEWARE = [
@@ -114,8 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),) # new
-#serve static file from this folder in production server
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)  # new
+# serve static file from this folder in production server
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 # Add compression and caching support
 # http://whitenoise.evans.io/en/stable/django.html#add-compression-and-caching-support

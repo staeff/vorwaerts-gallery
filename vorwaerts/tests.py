@@ -1,9 +1,11 @@
-from django.test import TestCase
-
 # Create your tests here.
 from http import HTTPStatus
 
+from django.test import TestCase
+
+
 # Create your tests here.
+
 
 class RobotsTest(TestCase):
     def test_get(self):
