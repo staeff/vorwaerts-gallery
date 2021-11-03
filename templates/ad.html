@@ -2,26 +2,21 @@
 
 {% block content%}
 
-<div class="col">
-  <div class="card mb-4 rounded-3 shadow-sm">
-    <div class="card-body">
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+  <div class="feature col">
+    <h2>Anzeige</h2>
+    <p>
       <img
         src="{{ STATIC_PREFIX }}img/detail/{{classifiedad.file_id}}/{{classifiedad.file_id}}-{{classifiedad.block_id}}.jpg"
-        alt=""
-      >
-    </div>
+        alt="" />
+  </p>
   </div>
-</div>
-<div class="col">
-  <div class="card mb-4 rounded-3 shadow-sm">
-    <div class="card-body">
-     <p>{{classifiedad.text}}</p>
-     <ul>
-       <li>{{classifiedad.text}}</li>
-       <li>{{classifiedad.block_id}}</li>
-       <li>{{classifiedad.newspaper_page}}</li>
-     </ul>
-    </div>
+  <div class="feature col">
+    <h2>Text</h2>
+    <p>{{classifiedad.text}}</p>
+    <h2>Info</h2>
+    <li>{{classifiedad.block_id}}</li>
+    <li>{{classifiedad.newspaper_page}}</li>
   </div>
 </div>
 {% endblock %}
