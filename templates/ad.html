@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="col">
+  <div class="card mb-4 rounded-3 shadow-sm">
+    <div class="card-body">
+      <img
+        src="{{ STATIC_PREFIX }}img/detail/{{classifiedad.file_id}}/{{classifiedad.file_id}}-{{classifiedad.block_id}}.jpg"
+        alt=""
+      >
+    </div>
+  </div>
+</div>
+<div class="col">
+  <div class="card mb-4 rounded-3 shadow-sm">
+    <div class="card-body">
+     <p>{{classifiedad.text}}</p>
+     <ul>
+       <li>{{classifiedad.text}}</li>
+       <li>{{classifiedad.block_id}}</li>
+       <li>{{classifiedad.newspaper_page}}</li>
+     </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
