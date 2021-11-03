@@ -8,7 +8,7 @@ from vorwaerts.views import AdDetailView
 
 urlpatterns = [
     path('', PageListView.as_view(), name='page_list'),
-    path('<int:pk>/', PageDetailView.as_view(), name='page_detail'),
+    path('page/<int:pk>/', PageDetailView.as_view(), name='page_detail'),
     path('ads/<int:pk>/', AdDetailView.as_view(), name='ad_detail'),
     path(
         "robots.txt",
