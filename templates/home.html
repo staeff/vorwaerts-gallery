@@ -15,7 +15,7 @@
       {% for page in object_list %}
       <div class="col">
         <div class="card shadow-sm text-center">
-          <a href="{{ page.get_absolute_url }}">
+          <a href="{% url 'page_detail' page.pk %}">
           <img
             src="{{ STATIC_PREFIX }}img/thumbs/{{page.file_id}}.jpg"
             alt="{{ page.file_id }}"
