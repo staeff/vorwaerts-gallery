@@ -34,7 +34,7 @@ class ClassifiedAd(models.Model):
         NewspaperPage,
         on_delete=models.CASCADE,
         related_name='advertisements',
-        related_query_name='advertisment',
+        related_query_name='advertisement',
     )
 
     def get_absolute_url(self):
