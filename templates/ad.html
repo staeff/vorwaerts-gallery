@@ -12,6 +12,12 @@
   </p>
   </div>
   <div class="feature col">
+    <h2>Navigation</h2>
+    <p>
+      <a href="{% url 'ad_detail' classifiedad.pk|add:'-1' %}">Vorherige</a>
+        {{classifiedad.pk}}
+      <a href="{% url 'ad_detail' classifiedad.pk|add:'1' %}">Nächste</a>
+    </p>
     <h2>Text</h2>
     <p>{{classifiedad.text}}</p>
     <h2>Info</h2>
