@@ -36,3 +36,6 @@ class ClassifiedAd(models.Model):
         related_name='advertisements',
         related_query_name='advertisment',
     )
+
+    def get_absolute_url(self):
+        return reverse('ad_detail', args=[str(self.id)])
