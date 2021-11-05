@@ -152,7 +152,7 @@ LOGGING = {
 # Show Debug toolbar only on localhost
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#configuring-internal-ips
 INTERNAL_IPS = [
-   '127.0.0.1',
+    '127.0.0.1',
 ]
 
 # Remove debug toolbar from middleware, when not debugging

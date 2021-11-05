@@ -1,6 +1,7 @@
 from django.urls import path
 from django.views.generic.base import TemplateView  # import TemplateView
 
+from vorwaerts.views import AdDetailView
 from vorwaerts.views import PageDetailView
 from vorwaerts.views import PageListView
 from vorwaerts.views import AdDetailView
