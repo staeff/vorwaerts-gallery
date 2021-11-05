@@ -19,13 +19,16 @@
         {{classifiedad.pk}} von 12281
       <a href="{% url 'ad_detail' classifiedad.pk|add:'1' %}">Nächste</a>
       {% random_pk as rnd %}
-      <a href="{% url 'ad_detail' rnd %}">Zufall</a>
+      <a href="{% url 'ad_detail' rnd %}">Zufall</a><br/><br/>
     </p>
     <h2>Text (OCR)</h2>
     <p>{{classifiedad.text}}</p>
     <h2>Info</h2>
-    <li>{{classifiedad.block_id}}</li>
-    <li>{{classifiedad.newspaper_page}}</li>
+    <p>Anzeige ist erschienen in der Ausgabe {{classifiedad.newspaper_page.issue_number}} vom
+      {{classifiedad.newspaper_page.publish_date | date:'d.m.Y'}} auf Seite
+      {{classifiedad.newspaper_page.page_number}}.
+    </p>
+    <p><a href="{% url 'page_detail' classifiedad.newspaper_page.id %}">Zur Zeitungsseite</a></p>
   </div>
 </div>
 {% endblock %}
