@@ -17,44 +17,45 @@
 
 <body>
     <header>
-        <div class="collapse bg-dark" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4 class="text-white">About</h4>
-                        <p class="text-muted">Dies ist ein Typoblindtext. An ihm kann man sehen,
-                            ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man
-                            Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
-                            Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt
-                            diese Sätze »Pangrams«. Sehr bekannt ist dieser:
-                            The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus. Quod erat demonstrandum.
-                        </p>
-                    </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <h4 class="text-white">Links</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="https://codingdavinci.de/" class="text-white">Coding da Vinci</a></li>
-                            <li><a href="https://www.fes.de/archiv-der-sozialen-demokratie/" class="text-white">Archiv der sozialen Demokratie. FES</a></li>
-                            <li><a href="https://github.com/staeff" class="text-white">Stephan Klinger</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-between">
-                <a href="/" class="navbar-brand d-flex align-items-center">
+                <a href="{% url 'page_list' %}" class="navbar-brand d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
                     <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
                     <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
                     </svg>
                     <strong> Vorwärts Kleinanzeigen</strong>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% url 'page_list' as url %}
+                    <li class="nav-item">
+                      <a
+                        class="nav-link {% if request.path == url %}active{% endif %}"
+                        href="{% url 'page_list' %}">Übersicht</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link {% if 'page' in request.path %}active{% endif %}"
+                         href="{% url 'page_detail' 1 %}">
+                           Seiten
+                          </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link {% if 'ads' in request.path %}active{% endif %}"
+                        href="{% url 'ad_detail' 1 %}">
+                        Anzeigen
+                      </a>
+                    </li>
+                  </ul>
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Suche" aria-label="Suche">
+                    <button class="btn btn-outline-success" type="submit">Suche</button>
+                  </form>
+                </div>
             </div>
         </div>
     </header>
