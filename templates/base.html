@@ -6,9 +6,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="An image gallery">
-    <meta name="author" content="CoderOO7">
-    <meta name="theme-color" content="#563d7c">
     <title>Vorwärts Kleinanzeigen</title>
 
     <!-- Bootstrap core CSS -->
@@ -51,8 +48,8 @@
                       </a>
                     </li>
                   </ul>
-                  <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Suche" aria-label="Suche">
+                  <form class="d-flex" action="{% url 'search_results' %}" method="get">
+                    <input name="q" class="form-control me-2" type="search" placeholder="Suche" aria-label="Suche">
                     <button class="btn btn-outline-success" type="submit">Suche</button>
                   </form>
                 </div>

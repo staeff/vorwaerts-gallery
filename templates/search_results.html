@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load vorwaerts_tags %}
+
+{% block content%}
+
+<h1>Suche nach </h1>
+
+<ul>
+  {% for ad in object_list %}
+    <p>
+     <a href="{% url 'ad_detail' ad.pk %}">{{ ad.text|truncatechars:150 }}</a>
+    </p>
+  {% endfor %}
+</ul>
+
+{% endblock %}

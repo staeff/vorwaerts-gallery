@@ -19,3 +19,12 @@ class PageDetailView(DetailView):
 class AdDetailView(DetailView):
     model = ClassifiedAd
     template_name = 'ad.html'
+
+class SearchResultsView(ListView):
+    model = ClassifiedAd
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = ClassifiedAd.objects.filter(text__icontains=query)
+        return object_list
