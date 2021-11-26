@@ -3,7 +3,7 @@
 
 {% block content%}
 
-<h1>Suche nach </h1>
+<h1>Suche nach {{ request.GET.get}}</h1>
 
 <ul>
   {% for ad in object_list %}
