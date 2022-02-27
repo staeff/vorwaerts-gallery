@@ -31,3 +31,21 @@ ads.tar.gz - tbd
 ```
 
 Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in the Browser
+
+## Make commands
+
+```
+venv                 Make a new virtual environment
+install              Make venv and install requirements
+migrate              Make and run migrations
+create_staticfiles   Create 'staticfiles' folder
+run                  Run the Django server
+qa                   Run code quality checks
+test                 Run the testsuite for the Django app
+bootstrap            Bootstrap the app, install, migrate, add images, load initial data
+start                Install requirements, apply migrations, then start development server
+load_data            Load data from fixture into DB
+wipe_data            Remove data of models from the DB
+extract_images       Download apps images to static/img folder
+clean                Remove the virtual env
+```
