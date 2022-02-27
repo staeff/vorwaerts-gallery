@@ -1,28 +1,18 @@
 # Backlog
 
-## Return all ads belonging to a page as query set
+## Ideas/Todos
 
-```py
->>> page1_ads = ClassifiedAd.objects.filter(newspaper_page=NewspaperPage.objects.get(pk=1))
->>> len(page1_ads)
-```
-
-If we have a foreign key we can use select_related or use snake case to fetch the related fields in a single query.
-
-* make swipe navigation of single page and single ad
-* group pages into issues
-
-* Use whitenoise with image cdn
-
-* wikimedia rest api on this day: Wikimedia REST API - https://en.wikipedia.org/api/rest_v1/#/Feed/aggregatedFeed
-
-* Filter images to get only the useful ones. Seems like 618/618 is the width value for the narrow column.
-* What are the results when I filter for this? Should I still try to figure a heuristic value for height?
+* Filter out wrong images in the data processing pipeline. Sometimes small details were recognized as additional image and therefore redundant
+  What are the results when I filter for this? Should I still try to figure a heuristic value for height?
   As little as 155 are valid ads, so there might be more noise here.
-
-* Not valid
-
-http://127.0.0.1:8000/vorwaerts/ads/27/ - 396x
+  https://botsdam.de/vorwaerts/ads/27/ - 396x
+* Use aws cloudfront to host the images (configure with whitenoise?)
+* set up makefile to run different configurations (like with herald)
+* Deploy to heroku (https://blog.ohidur.com/posts/python/articles/django-heroku-deployment/)
+* make swipe navigation of single page and single ad
+* group newspaper pages into issues
+* Scale large images and have a popup, when displaying the single ad page
+* wikimedia rest api on this day: Wikimedia REST API - https://en.wikipedia.org/api/rest_v1/#/Feed/aggregatedFeed
 
 * Make an about page
 
@@ -51,3 +41,19 @@ http://127.0.0.1:8000/vorwaerts/ads/27/ - 396x
                 </div>
             </div>
         </div>
+
+
+## Learnings
+
+* bit.io does not work as a backend for django, because you need access to a full postgres db and the
+  capability to create several tables. With bit.io you only get 1 table, that you can work with.
+
+
+## Return all ads belonging to a page as query set
+
+```py
+>>> page1_ads = ClassifiedAd.objects.filter(newspaper_page=NewspaperPage.objects.get(pk=1))
+>>> len(page1_ads)
+```
+
+If we have a foreign key we can use `select_related` or use snake case to fetch the related fields in a single query.
