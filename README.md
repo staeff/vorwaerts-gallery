@@ -16,7 +16,7 @@ scans.tar.gz - https://wetransfer.com/downloads/1ef5a16f37245d8d0208638d6b6cddab
 
 thumbs.tar.gz - https://wetransfer.com/downloads/874aa306a8b8c461705136e92fdb98b820211027101625/5e6bbc
 
-ads.taz.gz - tbd
+ads.tar.gz - tbd
 
 * Bootstrap Django app. Requires `make` and `tar`
 
