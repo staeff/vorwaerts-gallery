@@ -14,6 +14,11 @@
 * Scale large images and have a popup, when displaying the single ad page
 * wikimedia rest api on this day: Wikimedia REST API - https://en.wikipedia.org/api/rest_v1/#/Feed/aggregatedFeed
 
+### Text quality
+
+We have the field `ocr_confidence`, which has been added using the measure of the text from the xml.
+But we will try different things to improve the text, so this field might be `text_quality` in the future.
+
 * Make an about page
 
         <div class="collapse bg-dark" id="navbarHeader">
