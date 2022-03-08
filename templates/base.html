@@ -47,6 +47,13 @@
                         Anzeigen
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link {% if 'textqa' in request.path %}active{% endif %}"
+                        href="{% url 'text_quality' %}">
+                        Textqualität
+                      </a>
+                    </li>
                   </ul>
                   <form class="d-flex" action="{% url 'search_results' %}" method="get">
                     <input name="q" class="form-control me-2" type="search" placeholder="Suche" aria-label="Suche">

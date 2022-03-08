@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load vorwaerts_tags %}
+
+{% block content%}
+
+<ul>
+  {% for ad in object_list %}
+    <p>
+     (Textqualität: {{ad.ocr_confidence}}) <a href="{% url 'ad_detail' ad.pk %}">{{ ad.text|truncatechars:150 }}</a>
+    </p>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -28,3 +28,9 @@ class SearchResultsView(ListView):
         query = self.request.GET.get('q')
         object_list = ClassifiedAd.objects.filter(text__icontains=query)
         return object_list
+
+class TextQualityView(ListView):
+    model = ClassifiedAd
+    paginate_by = 300
+    template_name = 'text_quality.html'
+    ordering = ['-ocr_confidence']
