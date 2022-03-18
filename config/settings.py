@@ -62,6 +62,26 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Show Debug toolbar only on localhost
+# https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#configuring-internal-ips
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+# Remove debug toolbar from middleware, when not debugging
+if DEBUG is False:
+    del MIDDLEWARE[0]
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'vorwaerts',
+    ]
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -148,13 +168,3 @@ LOGGING = {
         }
     },
 }
-
-# Show Debug toolbar only on localhost
-# https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#configuring-internal-ips
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-
-# Remove debug toolbar from middleware, when not debugging
-if DEBUG is False:
-    del MIDDLEWARE[0]
