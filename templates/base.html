@@ -10,6 +10,18 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script>
+      /*Todo: Move to js file. Remember user selection */
+      var adboxes = document.getElementsByClassName("adbox");
+      function toggle_adboxes() {
+        for (var i = 0, max = adboxes.length; i < max; i++) {
+          adboxes[i].style.opacity === "0" ?
+          adboxes[i].style.opacity="1" :
+          adboxes[i].style.opacity="0"
+        }
+      }
+    </script>
 </head>
 
 <body>

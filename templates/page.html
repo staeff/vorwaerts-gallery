@@ -12,6 +12,8 @@
           <a href="{% url 'page_detail' newspaperpage.pk|add:'-1' %}">Vorherige</a>
           <a href="{% url 'page_detail' newspaperpage.pk|add:'1' %}">Nächste</a>
         </strong>
+        <br/><br/>
+        <span onclick="toggle_adboxes()">Anzeigenumrisse ein/ausblenden</span>
     </div>
     </div>
     <div class="container px-5">
@@ -30,10 +32,9 @@
             <rect
               x="{{i.x}}"
               y="{{i.y}}"
-              fill="#fff"
-              opacity="0"
               width="{{i.width}}"
-              height="{{i.height}}">
+              height="{{i.height}}"
+              class="adbox">
             </rect>
           </a>
         {% endfor %}

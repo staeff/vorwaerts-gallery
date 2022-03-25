@@ -35,3 +35,11 @@ main{
     object-fit: contain;
     height: inherit;
 } */
+
+.adbox {
+    fill: rgb(255, 255, 255);
+    fill-opacity: 0;
+    stroke-width: 3;
+    stroke: rgb(255, 0, 0);
+    opacity: 0
+}
