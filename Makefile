@@ -27,6 +27,10 @@ migrate: ## Make and run migrations
 create_staticfiles: ## Create 'staticfiles' folder
 	mkdir staticfiles
 
+.PHONY: collectstatic
+collectstatic: ## collect static files for prod
+	$(PYTHON) $(APP_DIR)/manage.py collectstatic --noinput
+
 .PHONY: run
 run: ## Run the Django server
 	$(PYTHON) $(APP_DIR)/manage.py runserver
