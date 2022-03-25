@@ -11,17 +11,6 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <script>
-      /*Todo: Move to js file. Remember user selection */
-      var adboxes = document.getElementsByClassName("adbox");
-      function toggle_adboxes() {
-        for (var i = 0, max = adboxes.length; i < max; i++) {
-          adboxes[i].style.opacity === "0" ?
-          adboxes[i].style.opacity="1" :
-          adboxes[i].style.opacity="0"
-        }
-      }
-    </script>
 </head>
 
 <body>
@@ -88,6 +77,42 @@
     </footer>
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+      const borderSwitcher = document.getElementById("flexSwitchCheck");
+      const adboxes = document.getElementsByClassName("adbox");
+      const localStorageState = localStorage.getItem("toggle");
+
+      function clickHandler() {
+          if (this.checked) {
+            for (var i = 0, max = adboxes.length; i < max; i++) {
+              adboxes[i].style.opacity="1";
+            };
+            localStorage.setItem("toggle", "1")
+          } else {
+            for (var i = 0, max = adboxes.length; i < max; i++) {
+              adboxes[i].style.opacity="0";
+            };
+            localStorage.setItem("toggle", "0")
+          }
+      }
+
+      borderSwitcher.addEventListener("click", clickHandler);
+
+      window.onload = checkTheme();
+
+      function checkTheme() {
+
+          if (localStorageState !== null && localStorageState === "1") {
+              // set the borders to visible
+              for (var i = 0, max = adboxes.length; i < max; i++) {
+                adboxes[i].style.opacity="1";
+              }
+              // adjust the slider position
+              const borderSwitch = document.getElementById("flexSwitchCheck");
+              borderSwitch.checked = true;
+          }
+      }
+    </script>
 </body>
 
 </html>

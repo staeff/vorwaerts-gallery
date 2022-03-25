@@ -13,7 +13,10 @@
           <a href="{% url 'page_detail' newspaperpage.pk|add:'1' %}">Nächste</a>
         </strong>
         <br/><br/>
-        <span onclick="toggle_adboxes()">Anzeigenumrisse ein/ausblenden</span>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheck">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Anzeigenumrisse ein/ausblenden</label>
+        </div>
     </div>
     </div>
     <div class="container px-5">
