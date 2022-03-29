@@ -1,3 +1,4 @@
+include .env
 SHELL := /bin/bash
 APP_DIR := .
 VENV := ./.venv
@@ -55,6 +56,8 @@ start: install migrate run ## Install requirements, apply migrations, then start
 
 .PHONY: load_data
 load_data: wipe_data ## Load data from fixture into DB
+	curl $(AWS_BASE_URL)amazonaws.com/vorwaerts_pages_data.json -o vorwaerts/fixtures/pages.json
+	curl $(AWS_BASE_URL)amazonaws.com/vorwaerts_ads_data.json -o vorwaerts/fixtures/ads.json
 	$(PYTHON) $(APP_DIR)/manage.py loaddata pages
 	$(PYTHON) $(APP_DIR)/manage.py loaddata ads
 
